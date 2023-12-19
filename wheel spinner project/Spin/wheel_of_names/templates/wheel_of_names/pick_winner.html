@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Django Project</title>
+    <link rel="stylesheet" href="{% static 'wheel_of_names/stylesheets/light.css' %}">
+    <link rel="stylesheet" href="{% static 'wheel_of_names/stylesheets/styles.css' %}">
+    <meta name="viewport" content="width=device-width">
+</head>
+<style>
+  body {
+background-color: #fff;
+font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+color: #161515;
+font-weight: 400;
+margin: 0;
+background-image: url("{% static 'wheel_of_names/images/bg-img.jpeg' %}");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+}
+header {
+background-color: 	#dfa290;
+color: #030303;
+text-align: center;
+padding: 10px;
+box-shadow: 0px 2px 5px #141212;
+}
+h1 {
+margin: 0;
+}
+
+.wrapper {
+display: flex;
+flex-direction: column;
+}
+section {
+
+padding: 20px;
+}
+  #students {
+    width: 60%;
+  }
+
+ #students {
+width: 30%; 
+float: left; 
+border: 2px solid #000000; 
+padding: 30px; 
+box-shadow: 5px 5px 5px #888888;
+background-color: 	#a88165;
+}
+
+#students h2 {
+color: #222;
+margin-bottom: 10px;
+}
+
+#students ul {
+list-style: none;
+padding: 0;
+margin: 0; 
+}
+
+#students li {
+margin-bottom: 10px;
+}
+
+#winners {
+width: 35%;
+float: right; 
+margin-top: 0px; 
+border: 2px solid #000000;
+padding: 30px;
+box-shadow: 5px 5px 5px #888888; 
+background-color: 	#ffe0bd;
+}
+
+#winners h2 {
+color: #222;
+margin-bottom: 10px;
+}
+
+#winners ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+#winners li {
+color: #494949;
+font-size: 16px;
+margin-bottom: 5px;
+}
+body {
+background-color: #fce9db;
+}
+
+</style>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>DJANGO PROJECT SPINNING WHEEL</h1>
+    </header>
+    <section>
+      <div id="students">
+        <h2>STUDENTS</h2>
+        <ul id="studentList"></ul>
+        <form id="addStudentForm" method="POST">
+          {% csrf_token %}
+          {{form}}
+          <!-- <label for="newStudentName">Input Student Name:</label> -->
+          <!-- <input type="text" id="newStudentName" required> -->
+          <button type="submit" onclick="addStudent()">Add Student</button>
+          <!-- <button type="button" onclick="DelStudent()">Delete Student</button> -->
+        </form>
+      </div>
+      <div id="winners">
+        <h2>WINNERS</h2>
+        <ul></ul>
+      </div>
+      <div id="wheel" class="text-light">
+        <canvas id="canvas" width="1000" height="600" class="text-light"></canvas>
+      </div>
+    </section>
+        <footer>
+          <h5> Project by :JOHN PAULO DELA CALZADA</h5>
+          </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/jquery.tinysort.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'wheel_of_names/javascripts/scale.fix.js' %}"></script>
+    <script src="{% static 'wheel_of_names/javascripts/wheel.js' %}"></script>
+    <script>
+
+        function congratulateWinner(winnerName) {
+          alert('Congratulations, ' + winnerName + '!');
+        }
+      </script>
+</body>
+</html>
